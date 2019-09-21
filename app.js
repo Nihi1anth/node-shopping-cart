@@ -5,10 +5,39 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var favicon = require('serve-favicon');
 var ehbs = require('express-handlebars');
+var mongoose = require('mongoose');
 
 var indexRouter = require('./routes/index');
 
 var app = express();
+
+mongoose.connect('mongodb://nihi1anth:root@ds131729.mlab.com:31729/shoppingcart', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+}, function(error) {
+  if (error) {
+    console.log(error);
+  } else {
+    console.log('connected...');    
+  }
+});
+
+var productSchema = {
+  'imagePath': String,
+  'title': String,
+  'description': String
+};
+
+var product = mongoose.model('product', productSchema);
+
+// product.find({}, (error, data) => {
+//   if (error) {
+//     console.log('Can\'t find the data.');    
+//   } else {
+//     console.log(data);
+    
+//   }
+// });
 
 app.engine('.hbs', ehbs({defaultLayout: 'layout', extname: '.hbs'}))
 app.set('view engine', '.hbs');
