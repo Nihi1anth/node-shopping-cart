@@ -22,28 +22,8 @@ mongoose.connect('mongodb://nihi1anth:root@ds131729.mlab.com:31729/shoppingcart'
   }
 });
 
-var productSchema = {
-  'imagePath': String,
-  'title': String,
-  'description': String
-};
-
-var product = mongoose.model('product', productSchema);
-
-// product.find({}, (error, data) => {
-//   if (error) {
-//     console.log('Can\'t find the data.');    
-//   } else {
-//     console.log(data);
-    
-//   }
-// });
-
 app.engine('.hbs', ehbs({defaultLayout: 'layout', extname: '.hbs'}))
 app.set('view engine', '.hbs');
-
-// view engine setup
-//app.set('views', path.join(__dirname, 'views'));
 
 app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 app.use(logger('dev'));
@@ -53,6 +33,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
+app.use('/details/:id', indexRouter);
+app.use('/admin', indexRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
