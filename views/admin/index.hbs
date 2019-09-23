@@ -1,1 +1,14 @@
-<h1>ADMIN PAGE</h1>
+{{#each products}}
+<div class="row admin-card">
+    {{#each this}}
+    <div class="col-sm-auto">
+        {{!-- <img class="admin-card-img pull-left" src="https://placeimg.com/100/100/nature" alt=""> --}}
+        <img class="admin-card-img pull-left" src="{{this.imagePath}}" alt="" style="height: 100px;">
+    </div>
+    <div class="col">
+        <div class="col"><h3>{{this.title}}</h3></div>
+        <div class="col"><p>{{this.price}}<span>&#8381;</span></p></div>
+    </div>
+    {{/each}}
+</div>
+{{/each}}
