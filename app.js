@@ -5,16 +5,25 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var favicon = require('serve-favicon');
 var ehbs = require('express-handlebars');
+var mongoose = require('mongoose');
 
 var indexRouter = require('./routes/index');
 
 var app = express();
 
-app.engine('hbs', ehbs({defaultLayout: 'layout', extname: 'hbs'}))
-app.set('view engine', 'hbs');
+mongoose.connect('mongodb://nihi1anth:root@ds131729.mlab.com:31729/shoppingcart', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+}, function(error) {
+  if (error) {
+    console.log(error);
+  } else {
+    console.log('connected...');    
+  }
+});
 
-// view engine setup
-//app.set('views', path.join(__dirname, 'views'));
+app.engine('.hbs', ehbs({defaultLayout: 'layout', extname: '.hbs'}))
+app.set('view engine', '.hbs');
 
 app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 app.use(logger('dev'));
@@ -24,6 +33,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
+app.use('/details/:id', indexRouter);
+app.use('/admin', indexRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
