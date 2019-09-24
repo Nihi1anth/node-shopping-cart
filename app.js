@@ -35,6 +35,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/details/:id', indexRouter);
 app.use('/admin', indexRouter);
+app.use('/admin/add', indexRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

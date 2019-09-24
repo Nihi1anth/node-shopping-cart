@@ -4,10 +4,9 @@ var Product = require('../models/products');
 
 var products = [];
 
-Product.find((error, doc) => {
-  var productChunks = [];
-  for (var i = 0; i < doc.length; i++) {
-    products.push(doc.slice(i, i + 1));
+Product.find((error, docs) => {
+  for (var i = 0; i < docs.length; i++) {
+    products.push(docs.slice(i, i + 1));
   }
 });
 
@@ -35,7 +34,11 @@ router.get('/details/:id', function(req, res, next) {
 });
 
 router.get('/admin', function(req, res, next) {
-  res.render('admin/index', { title: 'Admin', tovar: products});
+  res.render('admin/index', { title: 'Admin', products: products});
+});
+
+router.get('/admin/add', function(req, res, next) {
+  res.render('admin/add', { title: 'Добавить товар'});
 });
 
 module.exports = router;
