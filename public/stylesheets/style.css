@@ -7,6 +7,12 @@
     margin-right: 15px; 
 }
 
+/* .card-img {
+    display: inline-block;
+    height: auto;
+    max-width: 30%;
+} */
+
 .price {
     font-size: 24pt;
     font-weight: bold;

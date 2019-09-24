@@ -18,7 +18,7 @@ mongoose.connect('mongodb://nihi1anth:root@ds131729.mlab.com:31729/shoppingcart'
   if (error) {
     console.log(error);
   } else {
-    console.log('connected...');    
+    console.log('MongoDB connected...');    
   }
 });
 

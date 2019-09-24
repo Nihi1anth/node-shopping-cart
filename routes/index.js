@@ -2,6 +2,15 @@ var express = require('express');
 var router = express.Router();
 var Product = require('../models/products');
 
+var products = [];
+
+Product.find((error, doc) => {
+  var productChunks = [];
+  for (var i = 0; i < doc.length; i++) {
+    products.push(doc.slice(i, i + 1));
+  }
+});
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
   Product.find((error, doc) => {
@@ -26,7 +35,7 @@ router.get('/details/:id', function(req, res, next) {
 });
 
 router.get('/admin', function(req, res, next) {
-  res.render('admin/index', { title: 'Admin'});
+  res.render('admin/index', { title: 'Admin', tovar: products});
 });
 
 module.exports = router;
