@@ -6,6 +6,7 @@ var logger = require('morgan');
 var favicon = require('serve-favicon');
 var ehbs = require('express-handlebars');
 var mongoose = require('mongoose');
+var bodyParser = require('body-parser');
 
 var indexRouter = require('./routes/index');
 
@@ -31,6 +32,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(bodyParser.urlencoded({extended: false}));
 
 app.use('/', indexRouter);
 app.use('/details/:id', indexRouter);

@@ -1,8 +1,10 @@
 var express = require('express');
 var router = express.Router();
 var Product = require('../models/products');
+var bodyParser = require('body-parser');
 
 var products = [];
+var urlencodedParser = bodyParser.urlencoded({ extended: false });
 
 Product.find((error, docs) => {
   for (var i = 0; i < docs.length; i++) {
@@ -37,8 +39,13 @@ router.get('/admin', function(req, res, next) {
   res.render('admin/index', { title: 'Admin', products: products});
 });
 
-router.get('/admin/add', function(req, res, next) {
+router.get('/admin/add', urlencodedParser,function(req, res, next) {
   res.render('admin/add', { title: 'Добавить товар'});
+});
+
+router.post('/admin/add', urlencodedParser, function(req, res, next) {
+  console.log(req.body);
+  res.render('admin', {title: 'fdsfsd'});
 });
 
 module.exports = router;
