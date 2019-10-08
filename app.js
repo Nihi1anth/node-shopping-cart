@@ -3,41 +3,36 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var exphbs = require('express-handlebars');
 var favicon = require('serve-favicon');
-var ehbs = require('express-handlebars');
 var mongoose = require('mongoose');
-var bodyParser = require('body-parser');
 
-var indexRouter = require('./routes/index');
+var indexRouter = require('./routes/index.routes');
+var adminRouter = require('./routes/admin.routes');
 
 var app = express();
 
 mongoose.connect('mongodb://nihi1anth:root@ds131729.mlab.com:31729/shoppingcart', {
   useNewUrlParser: true,
   useUnifiedTopology: true
-}, function(error) {
-  if (error) {
-    console.log(error);
-  } else {
-    console.log('MongoDB connected...');    
-  }
 });
+mongoose.Promise = global.Promise;
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'Connection error: '));
 
-app.engine('.hbs', ehbs({defaultLayout: 'layout', extname: '.hbs'}))
-app.set('view engine', '.hbs');
+// view engine setup
+app.engine('hbs', exphbs({defaultLayout: 'layout', extname: 'hbs'}));
+app.set('view engine', 'hbs');
 
-app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
+app.use(favicon(path.join(__dirname, 'favicon.ico')));
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(bodyParser.urlencoded({extended: false}));
 
 app.use('/', indexRouter);
-app.use('/details/:id', indexRouter);
-app.use('/admin', indexRouter);
-app.use('/admin/add', indexRouter);
+app.use('/admin', adminRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
