@@ -1,9 +1,16 @@
 var Products = require('../models/product.model');
 
+exports.goHome = function (req, res) {
+  Products.find(function (error, products) {
+    if (error) res.render(error);
+    res.render('index', {title: 'Добро пожаловать', products: products});
+  });
+}
+
 exports.getAllProducts = function (req, res) {
   Products.find(function (error, products) {
     if (error) res.render(error);
-    res.render('catalog/index', {title: 'Каталог товаров', products: products});
+    res.render('admin/index', {title: 'Все товары', products: products});
   });
 };
 
@@ -18,7 +25,22 @@ exports.productCreateGet = function (req, res) {
 
 //добавить товар по запросу POST
 exports.productCreatePost = function (req, res) {
-  res.send(req.body);
+  var form = req.body;
+
+  new Products({
+    title: form.title,
+    category: form.category,
+    description: form.description,
+    status: form.status,
+    images: form.images.split(','),
+    price: form.price
+  }).save().then(function(doc) {
+    console.log('Сохранен объект: ', doc);
+  }).catch(function(error) {
+    console.log(error);
+  });
+  
+  res.redirect('/admin');
 };
 
 // Показать форму удаления товара по запросу GET.

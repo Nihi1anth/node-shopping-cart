@@ -1,1 +1,18 @@
-{{> adminSidebar}}
+<div id="wrapper">
+  {{> adminSidebar}}
+  <div id="page-content-wrapper">
+    <div class="container-fluid">
+      {{#each products}}
+      <div class="row prod">
+        <div class="col-4">
+          <img class="image100px" src="{{#each this.images}}{{#if @first}}{{.}}{{/if}}{{/each}}" alt="">
+        </div>
+        <div class="col-8">
+          <h3><a href="{{this._id}}">{{this.title}}</a></h3>
+          <p><b>{{this.price}}</b></p>
+        </div>
+      </div>
+      {{/each}}
+    </div>
+  </div>
+</div>

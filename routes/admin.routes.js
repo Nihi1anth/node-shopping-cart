@@ -6,9 +6,7 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false });
 var productCtrl = require('../controllers/product.controller');
 
 /* GET home page. */
-router.get('/', function (req, res) {
-  res.render('admin/index');
-});
+router.get('/', productCtrl.getAllProducts);
 
 router.get('/create', productCtrl.productCreateGet);
 

@@ -1,12 +1,12 @@
 var mongoose = require('mongoose');
 
 var ProductSchema = new mongoose.Schema({
-  title:        {type: String, maxlength: 50, required: true},
-  category:     {type: String, maxlength: 50, required: true},
-  description:  {type: String, required: true},
-  status:       {type: String, required: true, enum: ['Есть на складе', 'Под заказ'], default: 'Под заказ'},
+  title:        {type: String, maxlength: 100},
+  category:     {type: String, maxlength: 50},
+  description:  {type: String},
+  status:       {type: String},
   images:       [Array],
-  price:        {type: Number, required: true}
+  price:        {type: Number}
 });
 
 ProductSchema
