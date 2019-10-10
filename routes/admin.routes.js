@@ -16,7 +16,7 @@ router.get('/:id', productCtrl.productDetailAdmin);
 
 router.get('/:id/update', productCtrl.productUpdateGet);
 
-router.put('/:id/update', productCtrl.productUpdatePut);
+// router.put('/:id/update', urlencodedParser, productCtrl.productUpdatePut);
 
 router.get('/:id/delete', productCtrl.productDelete);
 

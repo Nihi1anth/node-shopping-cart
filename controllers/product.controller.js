@@ -65,7 +65,7 @@ exports.productUpdateGet = function(req, res) {
   // res.send('NOT IMPLEMENTED: Product ' + req.params.id + ' update GET');
   Products.findById(req.params.id, function(error, product) {
     if (error) res.send(error);
-    res.render('/:id/update', {title: 'Редактирование товара ' + product.title, product: product});
+    res.render('admin/updateForm', {title: 'Редактирование товара ' + product.title, product: product});
   });
 };
 
