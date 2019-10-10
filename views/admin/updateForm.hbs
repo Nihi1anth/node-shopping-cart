@@ -1,0 +1,41 @@
+<div id="wrapper">
+  {{> adminSidebar}}
+  <div id="page-content-wrapper">
+    <div class="container-fluid">
+      <h3>Редактирование товара</h3>
+      <form method="PUT" action="/admin/:id/update" autocomplete="off">
+        <div class="form-group">
+          <label for="title">Наименовние товара</label>
+          <input name="title" type="text" class="form-control" id="title" placeholder="Введите название товара" value="{{product.title}}">
+        </div>
+        <div class="form-group">
+        <label for="category">Категория</label>
+        <select name="category" class="form-control" id="category">
+          <option {{#if product.category=='Led светодиодные'}}selected{{/if}}>Led светодиодные</option>
+          <option>Днат натриевые</option>
+        </select>
+      </div>
+        <div class="form-group">
+          <label for="description">Описание товара</label>
+          <textarea name="description" class="form-control" id="description" rows="3"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="price">Цена товара</label>
+          <input name="price" type="number" class="form-control" id="price" placeholder="Введите цену товара">
+        </div>
+        <div class="form-group">
+          <label for="images">Изображение товара</label>
+          <textarea name="images" class="form-control" id="images" rows="3"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="status">Статус</label>
+            <select name="status" id="status" class="form-control">
+              <option>На складе</option>
+              <option>Под заказ</option>
+            </select>
+          </div>
+        <button type="submit" class="btn btn-primary">Сохранить</button>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,9 +1,6 @@
 <div id="wrapper">
   {{> adminSidebar}}
   <div id="page-content-wrapper">
-
-
-
     <div class="container-fluid">
       <table class="table">
         <thead class="thead-dark">
@@ -19,9 +16,9 @@
         <tbody>
           {{#each products}}
           <tr>
-            <th scope="row">{{@index}}</th>
+            <th scope="row">{{math @index "+" 1}}</th>
             <td><img class="image100px" src="{{#each this.images}}{{#if @first}}{{.}}{{/if}}{{/each}}" alt=""></td>
-            <td>{{this.title}}</td>
+            <td><a href="/admin/{{this._id}}">{{this.title}}</a></td>
             <td>{{this.category}}</td>
             <td>{{this.status}}</td>
             <td>{{this.price}}</td>

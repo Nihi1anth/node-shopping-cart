@@ -12,4 +12,12 @@ router.get('/create', productCtrl.productCreateGet);
 
 router.post('/create', urlencodedParser, productCtrl.productCreatePost);
 
+router.get('/:id', productCtrl.productDetailAdmin);
+
+router.get('/:id/update', productCtrl.productUpdateGet);
+
+router.put('/:id/update', productCtrl.productUpdatePut);
+
+router.get('/:id/delete', productCtrl.productDelete);
+
 module.exports = router;

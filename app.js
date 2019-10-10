@@ -21,7 +21,11 @@ var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'Connection error: '));
 
 // view engine setup
-app.engine('hbs', exphbs({defaultLayout: 'layout', extname: 'hbs'}));
+app.engine('hbs', exphbs({
+  defaultLayout: 'layout',
+  extname: 'hbs',
+  helpers: require('./public/javascripts/helpers.js').helpers
+}));
 app.set('view engine', 'hbs');
 
 app.use(favicon(path.join(__dirname, 'favicon.ico')));
