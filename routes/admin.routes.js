@@ -18,6 +18,7 @@ router.get('/:id/update', productCtrl.productUpdateGet);
 
 // router.put('/:id/update', urlencodedParser, productCtrl.productUpdatePut);
 
+
 router.get('/:id/delete', productCtrl.productDelete);
 
 module.exports = router;

@@ -11,8 +11,8 @@
         <div class="form-group">
         <label for="category">Категория</label>
         <select name="category" class="form-control" id="category">
-          <option>Led светодиодные</option>
-          <option>Днат натриевые</option>
+          <option {{#iff product.category '==' 'Led светодиодные'}}selected{{/iff}}>Led светодиодные</option>
+          <option {{#iff product.category '==' 'Днат натриевые'}}selected{{/iff}}>Днат натриевые</option>
         </select>
       </div>
         <div class="form-group">
@@ -30,8 +30,8 @@
           <div class="form-group">
             <label for="status">Статус</label>
             <select name="status" id="status" class="form-control">
-              <option>На складе</option>
-              <option>Под заказ</option>
+              <option {{#iff product.status '==' 'На складе'}}selected{{/iff}}>На складе</option>
+              <option {{#iff product.status '==' 'Под заказ'}}selected{{/iff}}>Под заказ</option>
             </select>
           </div>
           <button type="submit" class="btn btn-primary">Сохранить</button>

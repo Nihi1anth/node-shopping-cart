@@ -18,10 +18,10 @@
     </li>
     <hr>
     <li>
-      <a href="/admin/{{product._id}}/update">Редактировать товар</a>
+      {{#if product}}<a href="/admin/{{product._id}}/update">Редактировать товар</a>{{/if}}
     </li>
     <li>
-      <a href="/admin/{{product._id}}/delete">Удалить товар</a>
+      {{#if product}}<a href="/admin/{{product._id}}/delete">Удалить товар</a>{{/if}}
     </li>
   </ul>
 </div>
