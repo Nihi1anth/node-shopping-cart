@@ -3,7 +3,7 @@
   <div id="page-content-wrapper">
     <div class="container-fluid">
       <h3>Редактирование товара</h3>
-      <form method="PUT" action="admin/{{product._id}}/update" autocomplete="off">
+      <form method="POST" action="/admin/{{product._id}}/update" autocomplete="off">
         <div class="form-group">
           <label for="title">Наименовние товара</label>
           <input name="title" type="text" class="form-control" id="title" placeholder="Введите название товара" value="{{product.title}}">
@@ -39,7 +39,3 @@
     </div>
   </div>
 </div>
-
-<script>
-    console.log({{products.title}})
-</script>

@@ -16,8 +16,7 @@ router.get('/:id', productCtrl.productDetailAdmin);
 
 router.get('/:id/update', productCtrl.productUpdateGet);
 
-// router.put('/:id/update', urlencodedParser, productCtrl.productUpdatePut);
-
+router.post('/:id/update', urlencodedParser, productCtrl.productUpdatePut);
 
 router.get('/:id/delete', productCtrl.productDelete);
 

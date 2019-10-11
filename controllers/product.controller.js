@@ -69,7 +69,23 @@ exports.productUpdateGet = function(req, res) {
   });
 };
 
-// Обновить автора по запросу POST.
+// Обновить автора по запросу PUT.
 exports.productUpdatePut = function(req, res) {
-  res.send('NOT IMPLEMENTED: Product ' + req.params.id + ' update PUT');
+  // res.send('NOT IMPLEMENTED: Product ' + req.params.id + ' update PUT');
+  var updatedProduct = {
+    title: req.body.title,
+    category: req.body.category,
+    description: req.body.description,
+    status: req.body.status,
+    images: req.body.images.split(','),
+    price: req.body.price
+  }
+
+  Products.findByIdAndUpdate(req.params.id, updatedProduct, function(error, product) {
+    if (error) {
+      res.send(error);
+    } else {
+      res.redirect('/admin');
+    }
+  });
 };
