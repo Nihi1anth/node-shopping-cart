@@ -14,7 +14,8 @@ var app = express();
 
 mongoose.connect('mongodb://nihi1anth:root@ds131729.mlab.com:31729/shoppingcart', {
   useNewUrlParser: true,
-  useUnifiedTopology: true
+  useUnifiedTopology: true,
+  useFindAndModify: false
 });
 mongoose.Promise = global.Promise;
 var db = mongoose.connection;

@@ -3,7 +3,7 @@ var Products = require('../models/product.model');
 exports.goHome = function (req, res) {
   Products.find(function (error, products) {
     if (error) res.render(error);
-    res.render('index', {title: 'Добро пожаловать', products: products});
+    res.render('catalog/index', {title: 'Добро пожаловать', products: products});
   });
 }
 
@@ -34,8 +34,9 @@ exports.productCreatePost = function (req, res) {
     title: form.title,
     category: form.category,
     description: form.description,
+    features: form.features,
     status: form.status,
-    images: form.images.split(','),
+    images: form.images.split('\r\n'),
     price: form.price
   }).save().then(function(doc) {
     console.log('Сохранен объект: ', doc);

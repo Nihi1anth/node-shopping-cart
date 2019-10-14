@@ -1,3 +1,12 @@
+/* Set a background image by replacing the URL below */
+body {
+  background: url('https://source.unsplash.com/twukN12EN7c/1920x1080') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+}
+
 #wrapper {
   padding-left: 250px;
   -webkit-transition: all 0.5s ease;
@@ -110,4 +119,21 @@
 
 .image100px {
   width: 100px;
+}
+
+.logo {
+  height: 50px;
+}
+
+.navbar {
+  margin-bottom: 15px;
+}
+
+.price {
+  font-size: 36px;
+  font-weight: bold;
+}
+
+.price span {
+  font-size: 26px;
 }

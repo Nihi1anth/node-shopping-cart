@@ -1,8 +1,21 @@
 {{> header}}
 <div class="container">
-  {{#each products}}
   <div class="row">
-    <h3>{{this.title}}</h3>
+  {{#each products}}
+    <div class="col-md-4">
+      <div class="card mb-4 text-dark bg-light">
+        <a href="catalog/{{this._id}}">
+          <img class="card-img-top" src="{{#each this.images}}{{#if @first}}{{.}}{{/if}}{{/each}}" alt="Card image cap">
+        </a>
+        <div class="card-body">
+          <a href="catalog/{{this._id}}"><h5 class="card-title">{{this.title}}</h5></a>
+          <div class="card-category">Категория: {{this.category}}</div>
+          <div class="price">{{this.price}}<span>&#8381;</span></div>
+          <div class="card-status">{{this.status}}</div>
+          <a href="catalog/{{this._id}}" class="btn btn-outline-dark btn-sm">Подробнее</a>
+        </div>
+      </div>
+    </div>
+    {{/each}}
   </div>
-  {{/each}}
 </div>

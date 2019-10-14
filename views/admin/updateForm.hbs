@@ -20,6 +20,10 @@
           <textarea name="description" class="form-control" id="description" rows="3">{{product.description}}</textarea>
         </div>
         <div class="form-group">
+          <label for="features">Характеристики</label>
+          <textarea name="features" class="form-control" id="features" rows="3">{{product.features}}</textarea>
+        </div>
+        <div class="form-group">
           <label for="price">Цена товара</label>
           <input name="price" type="number" class="form-control" id="price" placeholder="Введите цену товара" value="{{product.price}}">
         </div>
@@ -30,7 +34,7 @@
           <div class="form-group">
             <label for="status">Статус</label>
             <select name="status" id="status" class="form-control">
-              <option {{#iff product.status '==' 'На складе'}}selected{{/iff}}>На складе</option>
+              <option {{#iff product.status '==' 'Есть на складе'}}selected{{/iff}}>Есть на складе</option>
               <option {{#iff product.status '==' 'Под заказ'}}selected{{/iff}}>Под заказ</option>
             </select>
           </div>
