@@ -1,32 +1,4 @@
 var Products = require('../models/product.model');
-var multer = require('multer');
-var path = require('path');
-
-const storageEngine = multer.diskStorage({
-  destination: '/images',
-  filename: function(req, file, fn) {
-    fn(null, new Date().getTime.toString()+'-'+file.fieldname+path.extname(file.originalname));
-  }
-});
-
-const upload = multer({
-  storage: storageEngine,
-  limits: {fileSize: 200000},
-  fileFilter: function(req, file, callback) {
-    validateFile(file, callback)
-  }
-}).single('photo');
-
-var validateFile = function(file, cb) {
-  const allowedFileTypes = /jpeg|jpg|png|gif/;
-  const extension = allowedFileTypes.test(path.extname(file.originalname).toLowerCase());
-  const mimeType = allowedFileTypes.test(file.mimetype);
-  if (extension && mimeType) {
-    return cb(null, true);
-  } else {
-    cb("Invalid file type.")
-  }
-}
 
 exports.goHome = function (req, res) {
   Products.find(function (error, products) {
@@ -35,8 +7,16 @@ exports.goHome = function (req, res) {
   });
 }
 
-exports.gallery = function (req, res) {
-  res.render('gallery', {title: 'Галерея'})
+exports.getUploadForm = function (req, res) {
+  res.render('upload', {title: 'Загрузить файл'});
+}
+
+exports.postUploadForm = function (req, res, file) {
+  let filedata = req.file;
+  if(!filedata) res.send("Ошибка при загрузке файла");
+  else res.send("Файл загружен");
+  console.log(filedata);
+  
 }
 
 exports.getAllProducts = function (req, res) {
