@@ -16,7 +16,6 @@ exports.postUploadForm = function (req, res, file) {
   if(!filedata) res.send("Ошибка при загрузке файла");
   else res.send("Файл загружен");
   console.log(filedata);
-  
 }
 
 exports.getAllProducts = function (req, res) {
