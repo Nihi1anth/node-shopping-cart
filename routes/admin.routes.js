@@ -1,9 +1,9 @@
-var express = require('express');
-var bodyParser = require('body-parser');
+const express = require('express');
+const bodyParser = require('body-parser');
 
-var router = express.Router();
-var urlencodedParser = bodyParser.urlencoded({ extended: false });
-var productCtrl = require('../controllers/product.controller');
+const router = express.Router();
+const urlencodedParser = bodyParser.urlencoded({ extended: false });
+const productCtrl = require('../controllers/product.controller');
 
 /* GET home page. */
 router.get('/', productCtrl.getAllProducts);

@@ -1,16 +1,16 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
-var exphbs = require('express-handlebars');
-var favicon = require('serve-favicon');
-var mongoose = require('mongoose');
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
+const exphbs = require('express-handlebars');
+const favicon = require('serve-favicon');
+const mongoose = require('mongoose');
 
-var indexRouter = require('./routes/index.routes');
-var adminRouter = require('./routes/admin.routes');
+const indexRouter = require('./routes/index.routes');
+const adminRouter = require('./routes/admin.routes');
 
-var app = express();
+const app = express();
 
 mongoose.connect('mongodb://nihi1anth:root@ds131729.mlab.com:31729/shoppingcart', {
   useNewUrlParser: true,
@@ -18,7 +18,7 @@ mongoose.connect('mongodb://nihi1anth:root@ds131729.mlab.com:31729/shoppingcart'
   useFindAndModify: false
 });
 mongoose.Promise = global.Promise;
-var db = mongoose.connection;
+const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'Connection error: '));
 
 // view engine setup

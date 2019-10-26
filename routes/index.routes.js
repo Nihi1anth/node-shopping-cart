@@ -1,12 +1,12 @@
-var express = require('express');
-var multer = require('multer');
-var router = express.Router();
+const express = require('express');
+const multer = require('multer');
+const router = express.Router();
 
-var multerConfig = require('../config/multer.config');
+const multerConfig = require('../config/multer.config');
 
-var productCtrl = require('../controllers/product.controller');
+const productCtrl = require('../controllers/product.controller');
 
-var upload = multer({ storage: multerConfig.storageConfig, fileFilter: multerConfig.fileFilterConfig });
+const upload = multer({ storage: multerConfig.storageConfig, fileFilter: multerConfig.fileFilterConfig });
 
 /* GET home page. */
 router.get('/', productCtrl.goHome);

@@ -1,4 +1,4 @@
-var Products = require('../models/product.model');
+const Products = require('../models/product.model');
 
 exports.goHome = function (req, res) {
   Products.find(function (error, products) {
@@ -39,7 +39,7 @@ exports.productCreateGet = function (req, res) {
 
 //добавить товар по запросу POST
 exports.productCreatePost = function (req, res) {
-  var form = req.body;
+  const form = req.body;
 
   new Products({
     title: form.title,
@@ -84,7 +84,7 @@ exports.productUpdateGet = function(req, res) {
 // Обновить автора по запросу PUT.
 exports.productUpdatePut = function(req, res) {
   // res.send('NOT IMPLEMENTED: Product ' + req.params.id + ' update PUT');
-  var updatedProduct = {
+  const updatedProduct = {
     title: req.body.title,
     category: req.body.category,
     description: req.body.description,
